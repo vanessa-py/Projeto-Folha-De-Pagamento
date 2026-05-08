@@ -6,12 +6,11 @@ Sistema desenvolvido em Java com interface gráfica Swing para cálculo e gerenc
 
 ## 👥 Integrantes do Grupo
 
-- Nome do Integrante 1
-- Nome do Integrante 2
-- Nome do Integrante 3
-- Nome do Integrante 4
+- Carla Vanessa
+- Julia Nogueira
+- Queite Lorrane
+- Heloisa
 
-> ⚠️ *Substitua pelos nomes reais antes de entregar.*
 
 ---
 
