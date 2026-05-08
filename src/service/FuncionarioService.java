@@ -8,9 +8,11 @@ public class FuncionarioService {
 
     private List<Funcionario> lista = new ArrayList<>();   // indica que essa lista só irá aceitar objeto do tipo funcionario
 
-    public void funcionarioPrecadastrados() {
+    public void carregarDadosIniciais() {
 
-        
+
+        // CARGA INICIAL OBRIGATÓRIA
+
         lista.add(new Funcionario(1, "Ana Silva", "Analista", 3000, 2, 1, 8.5));
         lista.add(new Funcionario(2, "Bruno Souza", "Dev", 5000, 1, 1, 10));
         lista.add(new Funcionario(3, "Carlos Lima", "Suporte", 1800, 3, 2, 6));
@@ -18,11 +20,11 @@ public class FuncionarioService {
         lista.add(new Funcionario(5, "Eduardo Alves", "Estagiário", 1200, 0, 0, 5));
     }
 
-    public void adicionar(Funcionario f) {
-        lista.add(f);
+    public void adicionar(Funcionario f) { // recebe um funcionario e adiciona na lista; recebe o metodo funcionario
+        lista.add(f);                      // adiciona o funcionario na lista(f é a variavel criada)
     }
 
-    public List<Funcionario> listar() {
-        return lista;
+    public List<Funcionario> listar() {  // mostra a lista funcionario inteira; listar() = nome do metodo
+        return lista;                     // entrega a lista que o metodo chamou
     }
 }
