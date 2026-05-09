@@ -26,13 +26,13 @@ public class TelaFolhaPagamento {
     }
 
     CalculadoraFolha calc = new CalculadoraFolha();
-    double inss = calc.calcularINSS(encontrado.getSalario());
-    double vt = calc.calcularValeTransporte(encontrado.getSalario(),encontrado.getValeTransporteDia());
-    double sf = calc.calcularSalarioFamilia(encontrado.getSalario(),encontrado.getFilhosMenores14());
-    double irrf = calc.calcularIRRF(encontrado.getSalario(),encontrado.getDependentes());
-    double fgts = calc.calcularFGTS(encontrado.getSalario());
-    double liquido = encontrado.getSalario() - inss - vt - irrf + sf;
-
+    double inss  = calc.calcularINSS(encontrado);
+    double vt    = calc.calcularValeTransporte(encontrado);
+    double sf    = calc.calcularSalarioFamilia(encontrado);
+    double irrf  = calc.calcularIRRF(encontrado);
+    double fgts  = calc.calcularFGTS(encontrado);
+    double liquido = calc.calcularSalarioLiquido(encontrado); // ela já fez esse método!
+   
     String holerite = "===== HOLERITE =====\n"
             + "Nome:              " + encontrado.getNome()   + "\n"
             + "Cargo:             " + encontrado.getCargo()  + "\n"
