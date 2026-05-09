@@ -61,44 +61,6 @@ folha-pagamento/
 
 ---
 
-## 📐 Regras de Cálculo
-
-### INSS (Tabela Progressiva)
-
-| Faixa Salarial | Alíquota |
-|---|---|
-| Até R$ 1.412,00 | 7,5% |
-| R$ 1.412,01 até R$ 2.666,68 | 9% |
-| R$ 2.666,69 até R$ 4.000,03 | 12% |
-| R$ 4.000,04 até R$ 7.786,02 | 14% |
-
-### IRRF
-
-| Base de Cálculo | Alíquota | Dedução |
-|---|---|---|
-| Até R$ 2.259,20 | Isento | — |
-| Até R$ 2.826,65 | 7,5% | R$ 169,44 |
-| Até R$ 3.751,05 | 15% | R$ 381,44 |
-| Até R$ 4.664,68 | 22,5% | R$ 662,77 |
-| Acima | 27,5% | R$ 896,00 |
-
-> Dedução por dependente: **R$ 189,59**
-
-### Vale-Transporte
-- Valor diário (ida e volta): **R$ 12,00**
-- Dias úteis considerados: **20 dias**
-- Limite máximo de desconto: **6% do salário bruto**
-
-### Salário Família
-- Concedido para salários até **R$ 1.819,26**
-- Valor: **R$ 62,04 por filho menor de 14 anos**
-
-### FGTS
-- **8% do salário bruto**
-- Não é descontado do funcionário — é depositado na conta FGTS
-
----
-
 ## 🛠️ Tecnologias Utilizadas
 
 - **Java** — linguagem principal
@@ -129,21 +91,6 @@ java -cp bin Main
 
 ---
 
-## 👤 Funcionários Pré-cadastrados
 
-| Matrícula | Nome | Cargo | Salário | Dependentes | Filhos < 14 | VT/dia |
-|---|---|---|---|---|---|---|
-| 1 | Ana Silva | Analista | R$ 3.000,00 | 2 | 1 | R$ 8,50 |
-| 2 | Bruno Souza | Dev | R$ 5.000,00 | 1 | 1 | R$ 10,00 |
-| 3 | Carlos Lima | Suporte | R$ 1.800,00 | 3 | 2 | R$ 6,00 |
-| 4 | Daniela Rocha | Gerente | R$ 8.000,00 | 0 | 0 | R$ 12,00 |
-| 5 | Eduardo Alves | Estagiário | R$ 1.200,00 | 0 | 0 | R$ 5,00 |
 
----
 
-## 📅 Informações Acadêmicas
-
-- **Disciplina:** Programação Orientada a Objetos
-- **Valor:** 1,5 pontos
-- **Data de apresentação:** 11 de Maio
-- **Entrega:** Arquivos zipados com nomes dos integrantes
