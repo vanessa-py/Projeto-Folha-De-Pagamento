@@ -1,89 +1,113 @@
 package service;
-
+import java.math.BigDecimal;
 import model.Funcionario;
 
 public class CalculadoraFolha{
 
-    public double calcularINSS(Funcionario f) {
+    public BigDecimal calcularINSS(Funcionario f) {
 
-        double salario = f.getSalario();
-        if (salario <= 1412.00) {
-            return salario * 0.075;
-        } else if (salario <= 2666.68) {
-            return salario * 0.09;
-        } else if (salario <= 4000.03) {
-            return salario * 0.12;
-        } else if (salario <= 7786.02) {
-            return salario * 0.14;
+        BigDecimal salario = f.getSalario();
+
+        if (salario.compareTo(new BigDecimal("1412.00")) <= 0) {
+
+            return salario.multiply(new BigDecimal("0.075"));
+
+        }else if (salario.compareTo(new BigDecimal("2666.68")) <= 0) {
+
+            return salario.multiply(new BigDecimal("0.09"));
+
+        }else if (salario.compareTo(new BigDecimal("4000.03")) <= 0) {
+
+            return salario.multiply(new BigDecimal("0.12"));
+
+        } else if (salario.compareTo(new BigDecimal("7786.02")) <= 0) {
+
+            return salario.multiply(new BigDecimal("0.14"));
+
         } else {
-        System.out.println("Salário não é válido");
+
+            System.out.println("Salário não é válido");
+
+            return BigDecimal.ZERO;
+
         }
-        return 0;
 
     }
 
     
-    public double calcularIRRF(Funcionario f) {
+    public BigDecimal calcularIRRF(Funcionario f) {
 
-        double salario = f.getSalario();
-        if (salario <= 2259.20) {
-            return 0;
-        } else if (salario <= 2826.65) {
-            return salario * 0.075 - 169.44;
-        } else if (salario <= 3751.05) {
-            return salario * 0.15 - 381.44;
-        } else if (salario <= 4664.68) {
-            return salario * 0.225 - 662.77;
+        BigDecimal salario = f.getSalario();
+
+        if (salario.compareTo(new BigDecimal("2259.20")) <= 0) {
+
+            return BigDecimal.ZERO;
+
+        } else if (salario.compareTo(new BigDecimal("2826.65")) <= 0) {
+
+            return salario.multiply(new BigDecimal("0.075")).subtract(new BigDecimal("169.44"));
+
+        } else if (salario.compareTo(new BigDecimal("3751.05")) <= 0) {
+
+            return salario.multiply(new BigDecimal("0.15")).subtract(new BigDecimal("381.44"));
+
+        } else if (salario.compareTo(new BigDecimal("4664.68")) <= 0) {
+
+            return salario.multiply(new BigDecimal("0.225")).subtract(new BigDecimal("662.77"));
+
         } else {
-            return salario * 0.275 - 896.00;
+
+            return salario.multiply(new BigDecimal("0.275")).subtract(new BigDecimal("896.00"));
+            
         }
+    }
+
+
+    public BigDecimal calcularValeTransporte(Funcionario f) {
+
+        BigDecimal valorDiarioIdaVolta = new BigDecimal("12.00");
+        BigDecimal custoTotalMes = valorDiarioIdaVolta.multiply(new BigDecimal("20"));
+        BigDecimal desconto = f.getSalario().multiply(new BigDecimal("0.06"));
+
+        return custoTotalMes.min(desconto);
 
     }
 
 
-    public double calcularValeTransporte(Funcionario f) {
-        
-        double valorDiarioIdaVolta = 12.00; 
-        double custoTotalMes = valorDiarioIdaVolta * 20;
-        double desconto = f.getSalario() * 0.06;
+    public BigDecimal calcularSalarioFamilia(Funcionario f) {
 
-        return Math.min(custoTotalMes, desconto);
-    }
+        BigDecimal salario = f.getSalario();
+        BigDecimal filhosMenores14 = new BigDecimal(f.getFilhosMenores14());
 
+        if (salario.compareTo(new BigDecimal("1819.26")) <= 0) {
 
-    public double calcularSalarioFamilia (Funcionario f) {
+            return filhosMenores14.multiply(new BigDecimal("62.04"));
 
-        double salario = f.getSalario();
-        double filhoMenor14 = f.getFilhosMenores14();
-        if (salario <= 1819.26){
-            return filhoMenor14 * 62.04;
         } else {
+
             System.out.println("Salário acima do limite");
-            return 0;
+            return BigDecimal.ZERO;
+
         }
+    }
+
+
+    public BigDecimal calcularFGTS(Funcionario f) {
+
+        return f.getSalario().multiply(new BigDecimal("0.08"));
 
     }
 
 
-    public double calcularFGTS (Funcionario f){
+    public BigDecimal calcularSalarioLiquido(Funcionario f) {
 
-        double salario = f.getSalario();
-        double fgts = salario * 0.08;
-        return fgts;
+        BigDecimal salarioBruto = f.getSalario();
+        BigDecimal inss = calcularINSS(f);
+        BigDecimal irrf = calcularIRRF(f);
+        BigDecimal valeTransporte = calcularValeTransporte(f);
+        BigDecimal salarioFamilia = calcularSalarioFamilia(f);
 
-    }
-
-
-    public double calcularSalarioLiquido (Funcionario f) {
-
-        double salarioBruto = f.getSalario();
-        double inss = calcularINSS(f);
-        double irrf = calcularIRRF(f);
-        double valeTransporte = calcularValeTransporte(f);
-        double salarioFamilia = calcularSalarioFamilia(f);
-
-        return salarioBruto - inss - irrf - valeTransporte + salarioFamilia;
-
+        return salarioBruto.subtract(inss).subtract(irrf).subtract(valeTransporte).add(salarioFamilia);
     }
 
 }
