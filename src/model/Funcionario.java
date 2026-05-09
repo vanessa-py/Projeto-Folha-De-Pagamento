@@ -25,7 +25,7 @@ public class Funcionario implements IFuncionario {
         this.filhosMenores14 = filhosMenores14;
         this.valeTransporteDia = valeTransporteDia;
     }
-
+ 
     
     @Override 
     public int getMatricula() {
@@ -72,4 +72,6 @@ public class Funcionario implements IFuncionario {
     public String toString() {
         return matricula + " - " + nome + " | " + cargo + " | R$ " + salario;
     }
+
+    
 }
