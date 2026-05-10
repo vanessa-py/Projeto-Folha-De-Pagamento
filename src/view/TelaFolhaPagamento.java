@@ -1,8 +1,9 @@
 package view;
+import java.math.BigDecimal;
 import javax.swing.JOptionPane;
 import model.Funcionario;
-import service.FuncionarioService;
 import service.CalculadoraFolha;
+import service.FuncionarioService;
 
 public class TelaFolhaPagamento {
 
@@ -26,12 +27,12 @@ public class TelaFolhaPagamento {
     }
 
     CalculadoraFolha calc = new CalculadoraFolha();
-    double inss  = calc.calcularINSS(encontrado);
-    double vt    = calc.calcularValeTransporte(encontrado);
-    double sf    = calc.calcularSalarioFamilia(encontrado);
-    double irrf  = calc.calcularIRRF(encontrado);
-    double fgts  = calc.calcularFGTS(encontrado);
-    double liquido = calc.calcularSalarioLiquido(encontrado); // ela já fez esse método!
+    BigDecimal inss  = calc.calcularINSS(encontrado);
+    BigDecimal vt    = calc.calcularValeTransporte(encontrado);
+    BigDecimal sf    = calc.calcularSalarioFamilia(encontrado);
+    BigDecimal irrf  = calc.calcularIRRF(encontrado);
+    BigDecimal fgts  = calc.calcularFGTS(encontrado);
+    BigDecimal liquido = calc.calcularSalarioLiquido(encontrado); // ela já fez esse método!
    
     String holerite = "===== HOLERITE =====\n"
             + "Nome:              " + encontrado.getNome()   + "\n"
